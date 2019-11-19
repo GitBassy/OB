@@ -11,6 +11,7 @@
         <tr><td>telefoon:</td><td>{{$author->phone}}</td></tr>
         <tr><td>staat:</td><td>{{$author->state}}</td></tr>
         <tr><td>contract:</td><td>{{$author->contract}}</td></tr>
+        <tr><td>contract:</td><td>{{$author->nationality}}</td></tr>
     </table>
     <a href="/pubs/authors/{{$author->au_id}}/edit" class="btn btn-default">Wijzig</a>
     {!!Form::open(['action' => ['AuthorsController@destroy', $author->au_id], 'method' => 'POST', 'class' => 'pull-right'])!!}

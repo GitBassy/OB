@@ -49,9 +49,12 @@ class TitlesController extends Controller
      * @param  \App\Title  $title
      * @return \Illuminate\Http\Response
      */
-    public function show(Title $title)
+    public function show($id)
     {
         //
+        $title = Title::where('title_id', $id)->get();
+        // geef variabele aan view en toon view
+        return view('titles.show')->with('title', $title);
     }
 
     /**

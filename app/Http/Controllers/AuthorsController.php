@@ -16,9 +16,9 @@ class AuthorsController extends Controller
     {
         $data = array(
         'authors' => Author::orderBy('au_lname', 'asc')->paginate(8),
-        'title' => 'Lijst met auteurs' 
+        'title' => 'Lijst met auteurs'
         );
-        
+
         return view('authors.index')->with($data);
     }
 
@@ -30,7 +30,7 @@ class AuthorsController extends Controller
     public function create()
     {
         $data = array(
-            'title' => 'Maak een nieuwe auteur' 
+            'title' => 'Maak een nieuwe auteur'
         );
         return view('authors.create')->with($data);
     }
@@ -58,6 +58,7 @@ class AuthorsController extends Controller
         $authors->city = $request->input('city');
         $authors->state = $request->input('state');
         $authors->zip = $request->input('zip');
+        $authors->nationality = $request->input('nationality');
         // contract veld controleren indien geen 1 dan staat het op NULL (mag niet)
         // dus op 0 zetten
         $contract_value = $request->input('contract');
@@ -92,9 +93,8 @@ class AuthorsController extends Controller
     public function edit($id)
     {
         $data = array(
-            // zoek een afdeling op id en stop in variabele afdeling
             'author' => Author::find($id),
-            'title' => 'Wijzig auteurs gegevens' 
+            'title' => 'Wijzig auteurs gegevens'
         );
         // geef variabele aan view en toon view
         return view('authors.edit')->with($data);
@@ -124,6 +124,7 @@ class AuthorsController extends Controller
         $author->phone = $request->input('phone');
         $author->state = $request->input('state');
         $author->zip = $request->input('zip');
+        $author->nationality = $request->input('nationality');
         $contract = $request->input('contract');
         if(is_null($contract)){$contract = 0;};
         $author->contract = $contract;
